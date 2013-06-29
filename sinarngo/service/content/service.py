@@ -19,6 +19,8 @@ from z3c.relationfield.schema import RelationList, RelationChoice
 from plone.formwidget.contenttree import ObjPathSourceBinder
 from plone.multilingualbehavior.directives import languageindependent
 
+from collective import dexteritytextindexer
+
 from sinarngo.service import MessageFactory as _
 
 
@@ -29,10 +31,12 @@ class IService(form.Schema, IImageScaleTraversable):
     Online Community and Services Content Type for Plone
     """
 
+    dexteritytextindexer.searchable('title')
     title = schema.TextLine(title=u'Name', 
                          description=u'Name of service.')
 
-    description = schema.TextLine(title=u'Description',
+    dexteritytextindexer.searchable('description')
+    description = schema.Text(title=u'Description',
                                   description=u'Brief description '
                                   'of service.'
                                   )
@@ -40,6 +44,7 @@ class IService(form.Schema, IImageScaleTraversable):
     url = schema.TextLine(title=u'Link to service',
                           description=u'eg. http://sinarproject.org')
 
+    dexteritytextindexer.searchable('details')
     details = RichText(
                 title=_(u"Details"),
                 required=False,
