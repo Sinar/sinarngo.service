@@ -4,7 +4,7 @@ Changelog
 0.2 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Add custom view
 
 
 0.1 (2013-07-01)
